@@ -2,6 +2,19 @@
 
 A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
 
+
+# Jungle-rails Screenshots
+
+!["Welcome page"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle1.png?raw=true)
+!["Sign up page"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle2.png?raw=true)
+!["Login with user after sign up"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle3.png?raw=true)
+!["Products on page"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle4.png?raw=true)
+!["Product description page and buy"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle5.png?raw=true)
+!["Products in cart"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle6.png?raw=true)
+!["Payment page"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle7.png?raw=true)
+!["Admin Page"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle8.png?raw=true)
+!["Admin dashboard"](https://github.com/sandeepgill62/jungle-rails/blob/master/docs/jungle9.png?raw=true)
+
 ## Setup
 
 1. Run `bundle install` to install dependencies
