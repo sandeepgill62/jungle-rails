@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_26_062916) do
+ActiveRecord::Schema.define(version: 2023_10_09_224032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", id: :serial, force: :cascade do |t|
+    t.integer "polls_id", null: false
+    t.integer "users_id", null: false
+    t.string "polls_answer", limit: 250, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "choices", id: :serial, force: :cascade do |t|
+    t.integer "polls_id", null: false
+    t.string "polls_options", limit: 100, null: false
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -41,6 +52,13 @@ ActiveRecord::Schema.define(version: 2021_06_26_062916) do
     t.string "email"
   end
 
+  create_table "polls", id: :serial, force: :cascade do |t|
+    t.string "title", limit: 100, null: false
+    t.string "question", limit: 250, null: false
+    t.string "link", limit: 500, null: false
+    t.integer "users_id", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -53,7 +71,18 @@ ActiveRecord::Schema.define(version: 2021_06_26_062916) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", limit: 100, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "password_digest"
+  end
+
+  add_foreign_key "answers", "polls", column: "polls_id", name: "answers_polls_id_fkey", on_delete: :cascade
+  add_foreign_key "answers", "users", column: "users_id", name: "answers_users_id_fkey", on_delete: :cascade
+  add_foreign_key "choices", "polls", column: "polls_id", name: "choices_polls_id_fkey", on_delete: :cascade
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
+  add_foreign_key "polls", "users", column: "users_id", name: "polls_users_id_fkey", on_delete: :cascade
   add_foreign_key "products", "categories"
 end
